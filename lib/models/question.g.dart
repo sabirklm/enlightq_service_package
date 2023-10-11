@@ -44,6 +44,15 @@ Question _$QuestionFromJson(Map<String, dynamic> json) => Question(
           .map((e) => Option.fromJson(e as Map<String, dynamic>))
           .toList(),
       explanation: json['explanation'] as String,
+      questionPaperId: json['questionPaperId'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
+      tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      createdBy: json['createdBy'] as String?,
     );
 
 Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
@@ -51,6 +60,11 @@ Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
       'text': instance.text,
       'options': instance.options.map((e) => e.toJson()).toList(),
       'explanation': instance.explanation,
+      'questionPaperId': instance.questionPaperId,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'createdBy': instance.createdBy,
+      'tags': instance.tags,
     };
 
 Option _$OptionFromJson(Map<String, dynamic> json) => Option(
