@@ -6,6 +6,11 @@ class User {
   String? id;
   String? username;
   String? email;
+  List<String>? phones;
+  String? degree;
+  String? college;
+  String? yop;
+  List<String>? preparingFor;
   String? avatarUrl;
   List<String>? favoriteCourses;
   List<String>? enrolledCourses;
@@ -15,6 +20,11 @@ class User {
     this.username,
     this.email,
     this.avatarUrl,
+    this.phones,
+    this.degree,
+    this.college,
+    this.preparingFor,
+    this.yop,
     this.favoriteCourses,
     this.enrolledCourses,
   });
