@@ -12,6 +12,7 @@ RecentEvent _$RecentEventFromJson(Map<String, dynamic> json) => RecentEvent(
       desc: json['desc'] as String?,
       imgUrl: json['imgUrl'] as String?,
       cratedAt: json['cratedAt'] as String?,
+      url: json['url'] as String?,
     );
 
 Map<String, dynamic> _$RecentEventToJson(RecentEvent instance) =>
@@ -21,4 +22,5 @@ Map<String, dynamic> _$RecentEventToJson(RecentEvent instance) =>
       'desc': instance.desc,
       'imgUrl': instance.imgUrl,
       'cratedAt': instance.cratedAt,
+      'url': instance.url,
     };

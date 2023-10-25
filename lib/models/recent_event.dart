@@ -5,13 +5,14 @@ part 'recent_event.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class RecentEvent {
-  @JsonKey(includeFromJson: false,includeToJson: false)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   String? id;
   String? type;
   String? title;
   String? desc;
   String? imgUrl;
   String? cratedAt;
+  String? url;
   RecentEvent({
     this.title,
     this.id,
@@ -19,6 +20,7 @@ class RecentEvent {
     this.desc,
     this.imgUrl,
     this.cratedAt,
+    this.url,
   });
   factory RecentEvent.fromJson(Map<String, dynamic> json) =>
       _$RecentEventFromJson(json);
