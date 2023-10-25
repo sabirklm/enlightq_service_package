@@ -14,13 +14,13 @@ enum LayoutType {
 class HomeLayout {
   String? id;
   String? title;
-  List<QuestionTag>? questionPapersIds;
+  List<QuestionTag>? questionBanks;
   String? layoutType;
 
   HomeLayout({
     this.id,
     this.title,
-    this.questionPapersIds,
+    this.questionBanks,
     this.layoutType,
   });
   factory HomeLayout.fromJson(Map<String, dynamic> json) =>
@@ -31,11 +31,13 @@ class HomeLayout {
 @JsonSerializable(explicitToJson: true)
 class QuestionTag {
   final String tag;
+  final String imgUrl;
   factory QuestionTag.fromJson(Map<String, dynamic> json) =>
       _$QuestionTagFromJson(json);
 
   QuestionTag({
     required this.tag,
+    required this.imgUrl,
   });
   Map<String, dynamic> toJson() => _$QuestionTagToJson(this);
 }

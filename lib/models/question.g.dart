@@ -9,7 +9,7 @@ part of 'question.dart';
 HomeLayout _$HomeLayoutFromJson(Map<String, dynamic> json) => HomeLayout(
       id: json['id'] as String?,
       title: json['title'] as String?,
-      questionPapersIds: (json['questionPapersIds'] as List<dynamic>?)
+      questionBanks: (json['questionBanks'] as List<dynamic>?)
           ?.map((e) => QuestionTag.fromJson(e as Map<String, dynamic>))
           .toList(),
       layoutType: json['layoutType'] as String?,
@@ -19,18 +19,19 @@ Map<String, dynamic> _$HomeLayoutToJson(HomeLayout instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
-      'questionPapersIds':
-          instance.questionPapersIds?.map((e) => e.toJson()).toList(),
+      'questionBanks': instance.questionBanks?.map((e) => e.toJson()).toList(),
       'layoutType': instance.layoutType,
     };
 
 QuestionTag _$QuestionTagFromJson(Map<String, dynamic> json) => QuestionTag(
       tag: json['tag'] as String,
+      imgUrl: json['imgUrl'] as String,
     );
 
 Map<String, dynamic> _$QuestionTagToJson(QuestionTag instance) =>
     <String, dynamic>{
       'tag': instance.tag,
+      'imgUrl': instance.imgUrl,
     };
 
 Section _$SectionFromJson(Map<String, dynamic> json) => Section(
