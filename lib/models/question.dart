@@ -14,7 +14,7 @@ enum LayoutType {
 class HomeLayout {
   String? id;
   String? title;
-  List<String>? questionPapersIds;
+  List<QuestionTag>? questionPapersIds;
   String? layoutType;
 
   HomeLayout({
@@ -26,6 +26,18 @@ class HomeLayout {
   factory HomeLayout.fromJson(Map<String, dynamic> json) =>
       _$HomeLayoutFromJson(json);
   Map<String, dynamic> toJson() => _$HomeLayoutToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class QuestionTag {
+  final String tag;
+  factory QuestionTag.fromJson(Map<String, dynamic> json) =>
+      _$QuestionTagFromJson(json);
+
+  QuestionTag({
+    required this.tag,
+  });
+  Map<String, dynamic> toJson() => _$QuestionTagToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -51,10 +63,6 @@ class Question {
   final List<Option> options;
   final String explanation;
   String? questionPaperId;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  String? createdBy;
-  List<String>? tags;
 
   Question({
     required this.id,
@@ -62,10 +70,6 @@ class Question {
     required this.options,
     required this.explanation,
     this.questionPaperId,
-    this.createdAt,
-    this.updatedAt,
-    this.tags,
-    this.createdBy,
   });
 
   factory Question.fromJson(Map<String, dynamic> json) =>

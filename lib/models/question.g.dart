@@ -10,7 +10,7 @@ HomeLayout _$HomeLayoutFromJson(Map<String, dynamic> json) => HomeLayout(
       id: json['id'] as String?,
       title: json['title'] as String?,
       questionPapersIds: (json['questionPapersIds'] as List<dynamic>?)
-          ?.map((e) => e as String)
+          ?.map((e) => QuestionTag.fromJson(e as Map<String, dynamic>))
           .toList(),
       layoutType: json['layoutType'] as String?,
     );
@@ -19,8 +19,18 @@ Map<String, dynamic> _$HomeLayoutToJson(HomeLayout instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
-      'questionPapersIds': instance.questionPapersIds,
+      'questionPapersIds':
+          instance.questionPapersIds?.map((e) => e.toJson()).toList(),
       'layoutType': instance.layoutType,
+    };
+
+QuestionTag _$QuestionTagFromJson(Map<String, dynamic> json) => QuestionTag(
+      tag: json['tag'] as String,
+    );
+
+Map<String, dynamic> _$QuestionTagToJson(QuestionTag instance) =>
+    <String, dynamic>{
+      'tag': instance.tag,
     };
 
 Section _$SectionFromJson(Map<String, dynamic> json) => Section(
@@ -45,14 +55,6 @@ Question _$QuestionFromJson(Map<String, dynamic> json) => Question(
           .toList(),
       explanation: json['explanation'] as String,
       questionPaperId: json['questionPaperId'] as String?,
-      createdAt: json['createdAt'] == null
-          ? null
-          : DateTime.parse(json['createdAt'] as String),
-      updatedAt: json['updatedAt'] == null
-          ? null
-          : DateTime.parse(json['updatedAt'] as String),
-      tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      createdBy: json['createdBy'] as String?,
     );
 
 Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
@@ -61,10 +63,6 @@ Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
       'options': instance.options.map((e) => e.toJson()).toList(),
       'explanation': instance.explanation,
       'questionPaperId': instance.questionPaperId,
-      'createdAt': instance.createdAt?.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
-      'createdBy': instance.createdBy,
-      'tags': instance.tags,
     };
 
 Option _$OptionFromJson(Map<String, dynamic> json) => Option(
